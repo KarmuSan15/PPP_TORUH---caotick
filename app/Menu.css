@@ -1,0 +1,147 @@
+/* Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background: #111;
+}
+
+/* Main header */
+.menu-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(135deg, #ff007f, #00c6ff); /* Gradiente vibrante */
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Container */
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alinea los elementos verticalmente */
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #fff;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ff007f, #00c6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Nav links */
+.nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center; /* Asegura que los enlaces estén alineados verticalmente */
+}
+
+.nav a,
+.nav button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: color 0.3s, transform 0.3s ease, background 0.3s ease;
+}
+
+/* Hover effect for nav items */
+.nav a:hover,
+.nav button:hover {
+  background: rgba(255, 255, 255, 0.2); /* Añadir un fondo sutil */
+  color: #ff007f; /* Color de texto brillante */
+  transform: scale(1.1);
+}
+
+/* Estilo para el botón de Cerrar sesión */
+.logout-btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 16px;
+  background-color: #e63946; /* Color rojo para cerrar sesión */
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: auto; /* Empuja el botón al extremo derecho */
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f; /* Rojo oscuro en hover */
+  transform: translateY(-1px);
+}
+
+/* Hamburger icon for mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav {
+      position: absolute;
+      top: 64px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #ff007f, #00c6ff); /* Gradiente vibrante */
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem 2rem;
+      display: none;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav.open {
+      display: flex;
+  }
+
+  .hamburger {
+      display: flex;
+  }
+
+  .hamburger span:nth-child(1) {
+      transform: rotate(45deg);
+      position: relative;
+      top: 5px;
+  }
+
+  .hamburger span:nth-child(2) {
+      opacity: 0;
+  }
+
+  .hamburger span:nth-child(3) {
+      transform: rotate(-45deg);
+      position: relative;
+      bottom: 5px;
+  }
+}

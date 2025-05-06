@@ -1,0 +1,117 @@
+/* Reset básico y tipografía */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Elimina el fondo del body */
+body {
+  min-height: 100vh;
+  background: #111; /* Fondo oscuro */
+  color: #000000; /* Color de texto por defecto */
+  line-height: 1.6;
+}
+
+/* Contenedor principal */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Titulares con gradiente */
+h1, h2, h3 {
+  color: transparent;
+  background: linear-gradient(135deg, #ff007f, #00c6ff); /* Gradiente vibrante */
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: 600;
+}
+
+/* Botones genéricos con gradiente y hover animado */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #00c6ff, #0072ff); /* Gradiente brillante */
+  color: white;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #0072ff, #00c6ff); /* Invertir gradiente */
+  transform: translateY(-2px);
+}
+
+/* Formularios generales */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #000000;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #00c6ff; /* Color brillante al enfocarse */
+  background: rgba(255, 255, 255, 0.3); /* Cambio de fondo al enfocarse */
+}
+
+/* Layout de contenido */
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Cards con sombras y bordes redondeados */
+.card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  margin: 20px 0;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Transiciones suaves para enlaces, botones y entradas */
+a, button, input {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+}
+
+/* Estilos finales del contenedor */
+.container {
+  color-scheme: light dark;
+  font-size: clamp(1rem, 5vw, 2rem);
+  width: clamp(320px, 90%, 1200px);
+}

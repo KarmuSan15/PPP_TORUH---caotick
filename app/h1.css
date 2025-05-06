@@ -1,0 +1,11 @@
+/* Este estilo oculta el h1 sospechoso generado externamente */
+h1[role="heading"][class*="css-text-"][aria-level="1"] {
+    display: none !important;
+  }
+  /* Eliminar el borde inferior de la barra sin afectar otros elementos */
+div.css-view-175oi2r {
+  border-bottom: none !important;
+}
+div[style*="background-color: rgb(255, 255, 255)"] {
+  display: none !important;
+}

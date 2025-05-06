@@ -1,0 +1,131 @@
+/* Reset básico y tipografía */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Eliminar fondo animado y degradado */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #111; /* Fondo oscuro */
+  color: #e0e0e0; /* Color de texto */
+  line-height: 1.6;
+}
+
+/* Contenedor centrado */
+.login-container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+/* Caja con efecto glassmorphism */
+.login-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 40px;
+  width: 350px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.login-box:hover {
+  transform: scale(1.02);
+}
+
+/* Título elegante */
+.login-box h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff007f, #00c6ff); /* Gradiente vibrante */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Campos de entrada estilizados */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: rgb(0, 0, 0);
+  transition: background 0.3s ease;
+}
+
+.input-field::placeholder {
+  color: #e0e0e0;
+}
+
+.input-field:focus {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Botón animado */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #00c6ff, #0072ff); /* Gradiente brillante */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+}
+
+/* Error */
+.error-message {
+  color: #ff5c5c;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Switch entre login y registro */
+.switch-form {
+  margin-top: 20px;
+}
+
+.switch-btn {
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  font-size: 15px;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.switch-btn:hover {
+  color: #ff007f; /* Color brillante en hover */
+}
+
+/* Estilos de contenedor */
+.container {
+  color-scheme: light dark;
+  font-size: clamp(1rem, 5vw, 2rem);
+  width: clamp(320px, 90%, 1200px);
+}
