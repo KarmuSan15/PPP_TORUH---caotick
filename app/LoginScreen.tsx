@@ -1,47 +1,41 @@
+// LoginScreen.tsx
 import React, { useState } from 'react';
-import { supabase } from '../lib/supabase'; // Importa la configuración de Supabase
+import { supabase } from '../lib/supabase';
 import './h1.css';
-import './global.css'; 
-import './Login.css'
+import './global.css';
+import './Login.css';
 
 interface Props {
-  onAuthChange: (user: { email: string } | null) => void; // Callback para actualizar el estado en Index
+  onAuthChange: (user: { email: string; id: string } | null) => void;
 }
 
 const LoginScreen: React.FC<Props> = ({ onAuthChange }) => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
-  const [isLogin, setIsLogin] = useState<boolean>(true); // Determina si estamos en login o registro
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLogin, setIsLogin] = useState(true);
 
-  // Maneja el login o el registro
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
     if (isLogin) {
-      // Iniciar sesión
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
       if (error) {
         setError(error.message);
       } else {
-        onAuthChange(data.user ? { email: data.user.email ?? '' } : null); // Actualiza el estado en Index
+        const user = data.user;
+        onAuthChange(user ? { email: user.email ?? '', id: user.id } : null);
       }
     } else {
-      // Registrar
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-      });
+      const { data, error } = await supabase.auth.signUp({ email, password });
 
       if (error) {
         setError(error.message);
       } else {
-        onAuthChange(data.user ? { email: data.user.email ?? '' } : null); // Actualiza el estado en Index
+        const user = data.user;
+        onAuthChange(user ? { email: user.email ?? '', id: user.id } : null);
       }
     }
   };
@@ -74,7 +68,7 @@ const LoginScreen: React.FC<Props> = ({ onAuthChange }) => {
         {error && <p className="error-message">{error}</p>}
         <div className="switch-form">
           <span>
-            {isLogin ? "¿No tienes una cuenta? " : "¿Ya tienes cuenta? "}
+            {isLogin ? '¿No tienes una cuenta? ' : '¿Ya tienes cuenta? '}
             <button onClick={() => setIsLogin(!isLogin)} className="switch-btn">
               {isLogin ? 'Registrarse' : 'Iniciar sesión'}
             </button>

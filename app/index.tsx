@@ -1,48 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase'; // Importa la configuración de Supabase
-import HomeScreen from './HomeScreen'; // Importa el componente de la pantalla de inicio
-import LoginScreen from './LoginScreen'; // Importa el componente de login
-import Menu from './Menu'; 
+import { supabase } from '../lib/supabase';
+import HomeScreen from './HomeScreen';
+import LoginScreen from './LoginScreen';
+import Juego from './juego';  // Importamos Juego
 import './h1.css';
-import './global.css'; 
-import './Login.css' // Importa los estilos globales
+import './global.css';
+import './Login.css';
 
 interface User {
   email: string;
+  id: string;
 }
 
 const Index: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
 
-  // Verifica la sesión cuando el componente se carga
   useEffect(() => {
     const fetchSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.user) {
-        setUser({ email: session.user.email ?? '' });
+        setUser({
+          email: session.user.email ?? '',
+          id: session.user.id
+        });
       }
     };
 
     fetchSession();
 
-    // Escucha los cambios en la autenticación
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-      setUser(session?.user ? { email: session.user.email ?? '' } : null);
+      setUser(session?.user ? {
+        email: session.user.email ?? '',
+        id: session.user.id
+      } : null);
     });
 
-    // Limpia el listener cuando el componente se desmonta
     return () => {
       authListener?.subscription.unsubscribe();
     };
   }, []);
 
   return (
-    <div className="App">
+    <div className="content">
       {user ? (
-        // Si el usuario está logueado, muestra el HomeScreen
-        <HomeScreen user={user} />
+        <Juego />  // No se pasa más el user como prop, porque Juego lo obtiene directamente de supabase
       ) : (
-        // Si el usuario no está logueado, muestra el LoginScreen
         <LoginScreen onAuthChange={setUser} />
       )}
     </div>

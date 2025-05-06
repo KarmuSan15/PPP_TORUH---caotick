@@ -1,4 +1,3 @@
-// juego.tsx
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import './juego.css';
@@ -8,20 +7,49 @@ interface Cell {
   isMine: boolean;
   isRevealed: boolean;
   adjacentMines: number;
+  isFlagged: boolean;  // Nueva propiedad para marcar las minas
 }
 
-interface juegoProps {
-  user: { email: string; id: string }; // Asegúrate de que el usuario esté autenticado
-}
-
-const juego: React.FC<juegoProps> = ({ user }) => {
+const Juego: React.FC = () => {
   const [grid, setGrid] = useState<Cell[][]>([]);
   const [juegoStatus, setjuegoStatus] = useState('playing');
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [minesCount, setMinesCount] = useState(0);
   const [flagsCount, setFlagsCount] = useState(0);
-  const gridSize = 8; // Tamaño de la cuadrícula (8x8)
-  const mineCount = 10; // Número de minas en el tablero
+  const [user, setUser] = useState<{ email: string; id: string } | null>(null); // Agregamos el estado de usuario
+  const gridSize = 8;
+  const mineCount = 10;
+
+  // Obtener el usuario desde supabase cuando el componente se monta
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        setUser({
+          email: user.email ?? '',
+          id: user.id,
+        });
+      }
+    };
+
+    fetchUser();
+
+    // Suscripción para escuchar cambios en la autenticación
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session?.user) {
+        setUser({
+          email: session.user.email ?? '',
+          id: session.user.id,
+        });
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => {
+      authListener?.subscription.unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
     startNewjuego();
@@ -32,7 +60,7 @@ const juego: React.FC<juegoProps> = ({ user }) => {
       const timer = setInterval(() => {
         setTimeElapsed((prevTime) => prevTime + 1);
       }, 1000);
-      return () => clearInterval(timer); // Limpiar el intervalo cuando el juego termine
+      return () => clearInterval(timer);
     }
   }, [juegoStatus]);
 
@@ -42,10 +70,10 @@ const juego: React.FC<juegoProps> = ({ user }) => {
         isMine: false,
         isRevealed: false,
         adjacentMines: 0,
+        isFlagged: false, // Inicializamos como no marcado
       }))
     );
 
-    // Colocar minas de manera aleatoria
     let minesPlaced = 0;
     while (minesPlaced < mineCount) {
       const row = Math.floor(Math.random() * gridSize);
@@ -56,7 +84,6 @@ const juego: React.FC<juegoProps> = ({ user }) => {
       }
     }
 
-    // Calcular los números de minas adyacentes
     for (let row = 0; row < gridSize; row++) {
       for (let col = 0; col < gridSize; col++) {
         if (newGrid[row][col].isMine) continue;
@@ -93,7 +120,7 @@ const juego: React.FC<juegoProps> = ({ user }) => {
     const newGrid = [...grid];
     const cell = newGrid[row][col];
 
-    if (cell.isRevealed) return; // No hacer nada si la celda ya está revelada
+    if (cell.isRevealed || cell.isFlagged) return;
 
     cell.isRevealed = true;
     setGrid(newGrid);
@@ -116,16 +143,21 @@ const juego: React.FC<juegoProps> = ({ user }) => {
   };
 
   const saveScore = async () => {
+    if (!user || !user.id || !user.email) {
+      console.warn('Usuario no definido. No se puede guardar la puntuación.');
+      return;
+    }
+
+    const minesFound = grid.flat().filter(cell => cell.isMine && cell.isFlagged).length; // Contamos las minas marcadas por el jugador
+
     const score = {
       user_id: user.id,
       email: user.email,
       time: timeElapsed,
-      minesFound: mineCount - minesCount,
+      minesfound: minesFound, // Ahora se usa el número de minas encontradas
     };
 
-    const { data, error } = await supabase
-      .from('scores')
-      .insert([score]);
+    const { data, error } = await supabase.from('scores').insert([score]);
 
     if (error) {
       console.error('Error guardando la puntuación', error);
@@ -135,27 +167,30 @@ const juego: React.FC<juegoProps> = ({ user }) => {
   };
 
   return (
-    <div className="juego">
-      <h2>Busca Minas</h2>
-      <button onClick={startNewjuego}>Nuevo Juego</button>
-      <div>Tiempo: {timeElapsed}s</div>
-      <div className="grid">
-        {grid.map((row, rowIndex) => (
-          <div key={rowIndex} className="row">
-            {row.map((cell, colIndex) => (
-              <div
-                key={colIndex}
-                className={`cell ${cell.isRevealed ? 'revealed' : ''}`}
-                onClick={() => handleCellClick(rowIndex, colIndex)}
-              >
-                {cell.isRevealed && !cell.isMine ? cell.adjacentMines : ''}
-              </div>
-            ))}
-          </div>
-        ))}
+    <div className="juego-container">
+      <Menu />
+      <div className="juego-center">
+        <h2>Busca Minas</h2>
+        <button onClick={startNewjuego}>Nuevo Juego</button>
+        <div className="timer">Tiempo: {timeElapsed}s</div>
+        <div className="grid">
+          {grid.map((row, rowIndex) => (
+            <div key={rowIndex} className="row">
+              {row.map((cell, colIndex) => (
+                <div
+                  key={colIndex}
+                  className={`cell ${cell.isRevealed ? 'revealed' : ''}`}
+                  onClick={() => handleCellClick(rowIndex, colIndex)}
+                >
+                  {cell.isRevealed && !cell.isMine ? cell.adjacentMines : ''}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default juego;
+export default Juego;

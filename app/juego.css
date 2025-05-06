@@ -97,3 +97,21 @@
     margin-bottom: 10px;
     color: #00c6ff;
   }
+
+  .juego-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+  
+  .juego-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
