@@ -16,39 +16,55 @@ const Scoreboard: React.FC = () => {
       }
     };
     checkUser();
+
+    // Suscribirse a cambios de autenticación
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (!session?.user) {
+        window.location.href = '/login'; // Redirigir al login si no está autenticado
+      } else {
+        // Cuando el usuario cambia, volvemos a cargar las puntuaciones
+        fetchScores();
+      }
+    });
+
+    // Limpiar la suscripción cuando el componente se desmonte
+    return () => {
+      authListener?.subscription.unsubscribe();
+    };
   }, []);
 
   // Cargar las puntuaciones de todos los jugadores
-  useEffect(() => {
-    const fetchScores = async () => {
-      setLoading(true);
+  const fetchScores = async () => {
+    setLoading(true);
 
-      try {
-        const { data, error } = await supabase
-          .from('scores')
-          .select('email, games_won, games_lost')  // Traemos victorias y derrotas
-          .order('games_won', { ascending: false });  // Ordenados por victorias
+    try {
+      const { data, error } = await supabase
+        .from('scores')
+        .select('email, games_won, games_lost')  // Traemos victorias y derrotas
+        .order('games_won', { ascending: false });  // Ordenados por victorias
 
-        if (error) {
-          console.error('Error obteniendo las puntuaciones:', error);
-        } else {
-          setScores(data || []);  // Si 'data' es null, usamos un array vacío
-        }
-      } catch (err) {
-        console.error('Error al recuperar puntuaciones:', err);
+      if (error) {
+        console.error('Error obteniendo las puntuaciones:', error);
+      } else {
+        setScores(data || []);  // Si 'data' es null, usamos un array vacío
       }
+    } catch (err) {
+      console.error('Error al recuperar puntuaciones:', err);
+    }
 
-      setLoading(false);
-    };
-
-    fetchScores();
-  }, []);  // Solo lo ejecutamos una vez al cargar el componente
+    setLoading(false);
+  };
 
   // Mostrar el nombre de usuario a partir del correo
   const getUsernameFromEmail = (email: string) => {
     const username = email.split('@')[0];
     return username || 'Usuario desconocido';
   };
+
+  // Cargar las puntuaciones al montar el componente por primera vez
+  useEffect(() => {
+    fetchScores();
+  }, []);  // Solo lo ejecutamos una vez al cargar el componente
 
   return (
     <div className="scoreboard-container">

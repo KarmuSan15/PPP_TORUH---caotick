@@ -1,0 +1,144 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-self: center;
+    padding-top: 50px;
+    background-color: #f9f9f9;
+  }
+  
+  .chat-content {
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .chat-header {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 20px; /* Añadimos un margen en la parte inferior de los mensajes */
+  }
+  
+  .chat-message {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sent .message-bubble {
+    align-self: flex-end;
+    background-color: #baecff;
+    padding: 8px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+  }
+  
+  .received .message-bubble {
+    align-self: flex-start;
+    background-color: #fff;
+    padding: 8px 15px;
+    border-radius: 15px;
+    border: 1px solid #f106b6;
+    max-width: 80%;
+  }
+  
+  .message-bubble {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    color: black;
+  }
+  
+  .message-bubble strong {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .timestamp {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 5px;
+  }
+  
+  .chat-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px; /* Añadimos espacio debajo del formulario */
+  }
+  
+  .chat-form input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+  }
+  
+  .chat-form button {
+    padding: 10px;
+    background-color: #4c98af;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .chat-form button:hover {
+    background-color: #45a049;
+  }
+  
+  .centered-message {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+  }
+  
+  .chat-messages-scroller {
+    height: 70vh;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .message-bubble {
+    max-width: 70%; /* El mensaje no ocupará más del 70% del ancho del chat */
+    word-wrap: break-word; /* Si una palabra es demasiado larga, se partirá */
+    overflow-wrap: break-word;
+    background-color: #e1ffc7;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 5px;
+    position: relative;
+  }
+  
+  .sent .message-bubble {
+    align-self: flex-end;
+  }
+  
+  .received .message-bubble {
+    align-self: flex-start;
+  }
+  
+  .message-text {
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .timestamp {
+    display: block;
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 5px;
+    text-align: right;
+  }
+  
+  
+  

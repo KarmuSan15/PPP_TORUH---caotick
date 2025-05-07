@@ -176,7 +176,7 @@ const Juego: React.FC = () => {
       .from('scores')
       .select('games_won, games_lost')
       .eq('user_id', user.id)
-      .single();
+      .maybeSingle()
 
     if (fetchError) {
       console.error('Error obteniendo el puntaje actual', fetchError);
