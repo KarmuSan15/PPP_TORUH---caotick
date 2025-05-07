@@ -40,13 +40,13 @@ const Scoreboard: React.FC = () => {
     try {
       const { data, error } = await supabase
         .from('scores')
-        .select('email, games_won, games_lost')  // Traemos victorias y derrotas
-        .order('games_won', { ascending: false });  // Ordenados por victorias
+        .select('email, games_won, games_lost')
+        .order('games_won', { ascending: false });
 
       if (error) {
         console.error('Error obteniendo las puntuaciones:', error);
       } else {
-        setScores(data || []);  // Si 'data' es null, usamos un array vacío
+        setScores(data || []);
       }
     } catch (err) {
       console.error('Error al recuperar puntuaciones:', err);
@@ -64,13 +64,18 @@ const Scoreboard: React.FC = () => {
   // Cargar las puntuaciones al montar el componente por primera vez
   useEffect(() => {
     fetchScores();
-  }, []);  // Solo lo ejecutamos una vez al cargar el componente
+  }, []);
 
   return (
     <div className="scoreboard-container">
       <Menu />
       <div className="scoreboard-content">
-        <h2>🏆 Puntuaciones 🏆</h2>
+        
+        {/* Encabezado fijo y centrado */}
+        <div className="scoreboard-header">
+          <h2>🏆 Puntuaciones 🏆</h2>
+        </div>
+
         {loading ? (
           <p>Cargando puntuaciones...</p>
         ) : scores.length > 0 ? (
@@ -84,7 +89,7 @@ const Scoreboard: React.FC = () => {
                   <div className="scoreboard-details">
                     <strong>👤 {username}</strong>
                     <p>🎉 {score.games_won} Partidas Ganadas</p>
-                    <p>💔 {score.games_lost} Partidas Perdidas</p> {/* Muestra las derrotas también */}
+                    <p>💔 {score.games_lost} Partidas Perdidas</p>
                   </div>
                 </li>
               );
