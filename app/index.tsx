@@ -43,7 +43,7 @@ const Index: React.FC = () => {
   return (
     <div className="content">
       {user ? (
-        <Juego />  // No se pasa más el user como prop, porque Juego lo obtiene directamente de supabase
+        <HomeScreen />  // No se pasa más el user como prop, porque Juego lo obtiene directamente de supabase
       ) : (
         <LoginScreen onAuthChange={setUser} />
       )}

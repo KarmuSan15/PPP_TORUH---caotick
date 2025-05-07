@@ -171,21 +171,39 @@ const Juego: React.FC = () => {
 
     const minesFound = grid.flat().filter(cell => cell.isMine && cell.isFlagged).length; // Contamos las minas marcadas por el jugador
 
+    // Primero, obtenemos el puntaje actual para el usuario
+    const { data: existingScores, error: fetchError } = await supabase
+      .from('scores')
+      .select('games_won, games_lost')
+      .eq('user_id', user.id)
+      .single();
+
+    if (fetchError) {
+      console.error('Error obteniendo el puntaje actual', fetchError);
+      return;
+    }
+
+    const gamesWon = result === 'won' ? (existingScores?.games_won || 0) + 1 : existingScores?.games_won || 0;
+    const gamesLost = result === 'lost' ? (existingScores?.games_lost || 0) + 1 : existingScores?.games_lost || 0;
+
     const score = {
       user_id: user.id,
       email: user.email,
       time: timeElapsed,
-      minesfound: minesFound, // Ahora se usa el número de minas encontradas
-      games_won: result === 'won' ? 1 : 0,  // Guardamos el estado de ganado
-      games_lost: result === 'lost' ? 1 : 0,  // Guardamos el estado de perdido
+      minesfound: minesFound, // Número de minas encontradas por el jugador
+      games_won: gamesWon,  // Sumamos las partidas ganadas
+      games_lost: gamesLost,  // Sumamos las partidas perdidas
     };
 
-    const { data, error } = await supabase.from('scores').insert([score]);
+    // Usamos 'upsert' para insertar o actualizar el registro
+    const { data, error } = await supabase
+      .from('scores')
+      .upsert([score], { onConflict: 'user_id' });
 
     if (error) {
-      console.error('Error guardando la puntuación', error);
+      console.error('Error guardando o actualizando la puntuación', error);
     } else {
-      console.log('Puntuación guardada', data);
+      console.log('Puntuación guardada o actualizada', data);
     }
   };
 
@@ -230,19 +248,19 @@ const Juego: React.FC = () => {
                 <div
                   key={colIndex}
                   className={`cell ${cell.isRevealed ? 'revealed' : ''} ${cell.isFlagged ? 'flagged' : ''}`}
-                  onClick={() => handleCellClick(rowIndex, colIndex)}
-                  onContextMenu={(e) => handleContextMenu(e, rowIndex, colIndex)}
-                >
-                  {cell.isRevealed && !cell.isMine ? cell.adjacentMines : ''}
-                  {cell.isRevealed && cell.isMine ? '💣' : ''}
-                  {cell.isFlagged ? '🚩' : ''}
-                </div>
-              ))}
-            </div>
-          ))}
+                    onClick={() => handleCellClick(rowIndex, colIndex)}
+                    onContextMenu={(e) => handleContextMenu(e, rowIndex, colIndex)}
+                  >
+                    {cell.isRevealed && !cell.isMine ? cell.adjacentMines : ''}
+                    {cell.isRevealed && cell.isMine ? '💣' : ''}
+                    {cell.isFlagged ? '🚩' : ''}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 
