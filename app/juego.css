@@ -1,129 +1,131 @@
 /* Game.css - Caotick theme */
 
 .game {
-    text-align: center;
-    padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #111;
-    color: #e0e0e0;
-    min-height: 100vh;
-  }
-  
-  h2 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    font-weight: bold;
-    background: linear-gradient(135deg, #ff007f, #00c6ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  
-  /* Botón con gradiente */
-  button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(45deg, #ff007f, #00c6ff);
-    color: white;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
-  }
-  
-  .grid {
-    display: inline-block;
-    margin-top: 20px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 10px;
-  }
-  
-  .row {
-    display: flex;
-  }
-  
-  .cell {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.25); /* Más visible */
-    background-color: rgba(255, 255, 255, 0.1); /* Un poco más claro */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #00c6ff;
-    user-select: none;
-    transition: background-color 0.3s ease, transform 0.1s, box-shadow 0.2s;
-    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3); /* Ayuda a distinguir las celdas */
-  }
-  
-  .cell:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: scale(1.05);
-    box-shadow: 0 0 4px #00c6ff;
-  }
-  
-  .cell.revealed {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #000000;
-    border: 1px solid #00c6ff;
-    cursor: default;
-  }
-  
-  .cell.revealed.mined {
-    background-color: #ff4b4b;
-    color: rgb(0, 0, 0);
-    border-color: #ff007f;
-  }
-  
-  .cell.revealed.safe {
-    background-color: rgba(255, 255, 255, 0.15);
-  }
-  .timer {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #00c6ff;
-  }
+  text-align: center; /* Centra el contenido */
+  padding: 20px; /* Espaciado interno */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna */
+  background-color: #111; /* Fondo oscuro */
+  color: #e0e0e0; /* Color de texto claro */
+  min-height: 100vh; /* Altura mínima igual al 100% de la pantalla */
+}
 
-  .juego-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #ffffff;
-  }
-  
-  .juego-center {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-  .instructions {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    font-size: 14px;
-    color: black;  /* Color de texto negro */
-  }
-  .cell.flagged {
-    background-color: #ffeb3b; /* Amarillo claro para la celda marcada con bandera */
-  }
-    
+h2 {
+  margin-bottom: 20px; /* Espaciado inferior */
+  font-size: 2rem; /* Tamaño de fuente */
+  font-weight: bold; /* Negrita */
+  background: linear-gradient(135deg, #ff007f, #00c6ff); /* Gradiente de colores vibrantes */
+  -webkit-background-clip: text; /* Clip del fondo para que se aplique solo al texto */
+  background-clip: text; /* Clip del fondo para que se aplique solo al texto */
+  color: transparent; /* Texto transparente para mostrar el gradiente */
+}
+
+/* Botón con gradiente */
+button {
+  margin: 10px; /* Espaciado alrededor del botón */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 1rem; /* Tamaño de fuente */
+  border: none; /* Sin borde */
+  border-radius: 8px; /* Bordes redondeados */
+  background: linear-gradient(45deg, #ff007f, #00c6ff); /* Gradiente */
+  color: white; /* Texto blanco */
+  cursor: pointer; /* Aparece como un puntero al pasar el mouse */
+  transition: transform 0.2s, box-shadow 0.2s; /* Transición para el hover */
+}
+
+button:hover {
+  transform: translateY(-2px); /* Movimiento de elevación en hover */
+  box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4); /* Sombra en hover */
+}
+
+.grid {
+  display: inline-block; /* Mostrar en línea */
+  margin-top: 20px; /* Espaciado superior */
+  border-radius: 16px; /* Bordes redondeados */
+  background: rgba(255, 255, 255, 0.05); /* Fondo translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* Sombra de caja */
+  backdrop-filter: blur(10px); /* Filtro de desenfoque para el fondo */
+  -webkit-backdrop-filter: blur(10px); /* Filtro de desenfoque para el fondo */
+  padding: 10px; /* Espaciado interno */
+}
+
+.row {
+  display: flex; /* Usa Flexbox para alinear las celdas */
+}
+
+.cell {
+  width: 40px; /* Ancho de la celda */
+  height: 40px; /* Alto de la celda */
+  border: 1px solid rgba(255, 255, 255, 0.25); /* Borde de la celda */
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil */
+  display: flex; /* Usa Flexbox para centrar el contenido */
+  align-items: center; /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal */
+  cursor: pointer; /* Aparece como puntero */
+  font-weight: bold; /* Negrita */
+  font-size: 1.2rem; /* Tamaño de fuente */
+  color: #00c6ff; /* Color de texto */
+  user-select: none; /* Evita la selección de texto */
+  transition: background-color 0.3s ease, transform 0.1s, box-shadow 0.2s; /* Transiciones suaves */
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3); /* Sombra interna para las celdas */
+}
+
+.cell:hover {
+  background-color: rgba(255, 255, 255, 0.15); /* Cambio de fondo en hover */
+  transform: scale(1.05); /* Aumento de tamaño al pasar el mouse */
+  box-shadow: 0 0 4px #00c6ff; /* Sombra de color en hover */
+}
+
+.cell.revealed {
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo más claro cuando se revela */
+  color: #000000; /* Color de texto oscuro */
+  border: 1px solid #00c6ff; /* Borde azul claro */
+  cursor: default; /* Cambia el cursor a predeterminado cuando se revela */
+}
+
+.cell.revealed.mined {
+  background-color: #ff4b4b; /* Fondo rojo para la celda con mina */
+  color: rgb(0, 0, 0); /* Texto negro */
+  border-color: #ff007f; /* Borde rosado para mina */
+}
+
+.cell.revealed.safe {
+  background-color: rgba(255, 255, 255, 0.15); /* Fondo más claro para celdas seguras */
+}
+
+.timer {
+  font-size: 1.2rem; /* Tamaño de fuente para el temporizador */
+  margin-bottom: 10px; /* Espaciado inferior */
+  color: #00c6ff; /* Color azul brillante */
+}
+
+.juego-container {
+  display: flex; /* Usamos Flexbox para la estructura */
+  flex-direction: column; /* Disposición vertical */
+  align-items: center; /* Centrado horizontal */
+  min-height: 100vh; /* Altura mínima igual a la pantalla */
+  background-color: #ffffff; /* Fondo blanco */
+}
+
+.juego-center {
+  flex: 1; /* Ocupa todo el espacio disponible */
+  display: flex; /* Usamos Flexbox */
+  flex-direction: column; /* Disposición vertical */
+  align-items: center; /* Centrado horizontal */
+  justify-content: center; /* Centrado vertical */
+  width: 100%; /* Ocupa todo el ancho */
+}
+
+.instructions {
+  margin-top: 20px; /* Espaciado superior */
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde gris claro */
+  background-color: #f9f9f9; /* Fondo blanco roto */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 14px; /* Tamaño de fuente pequeño */
+  color: black;  /* Color de texto negro */
+}
+
+.cell.flagged {
+  background-color: #ffeb3b; /* Amarillo claro para la celda marcada con bandera */
+}

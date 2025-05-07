@@ -1,122 +1,122 @@
 /* Reset básico y tipografía */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0; /* Elimina márgenes predeterminados */
+  padding: 0; /* Elimina rellenos predeterminados */
+  box-sizing: border-box; /* Asegura que el tamaño de los elementos incluye bordes y padding */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define una tipografía moderna y legible */
 }
 
 /* Eliminar fondo animado y degradado */
 body,
 html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  margin: 0; /* Elimina márgenes predeterminados */
+  padding: 0; /* Elimina rellenos predeterminados */
+  height: 100%; /* Asegura que el contenido cubra toda la altura de la página */
   background: #111; /* Fondo oscuro */
-  color: #e0e0e0; /* Color de texto */
-  line-height: 1.6;
+  color: #e0e0e0; /* Color de texto claro para contraste */
+  line-height: 1.6; /* Espaciado entre líneas para mayor legibilidad */
 }
 
 /* Contenedor centrado */
 .login-container {
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(5px);
+  height: 80vh; /* El contenedor ocupa el 80% de la altura de la ventana */
+  display: flex; /* Usamos Flexbox para centrar el contenido */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  backdrop-filter: blur(5px); /* Aplica un desenfoque de fondo (efecto de vidrio esmerilado) */
 }
 
 /* Caja con efecto glassmorphism */
 .login-box {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 40px;
-  width: 350px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: rgb(0, 0, 0);
-  text-align: center;
-  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+  border-radius: 16px; /* Bordes redondeados */
+  padding: 40px; /* Espaciado interno */
+  width: 350px; /* Ancho fijo para la caja */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* Sombra suave alrededor de la caja */
+  backdrop-filter: blur(10px); /* Desenfoque de fondo para el efecto glassmorphism */
+  -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Webkit para Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Borde suave blanco */
+  color: rgb(0, 0, 0); /* Color de texto oscuro */
+  text-align: center; /* Centra el texto dentro de la caja */
+  transition: transform 0.3s ease; /* Efecto de transición suave para transformaciones */
 }
 
 .login-box:hover {
-  transform: scale(1.02);
+  transform: scale(1.02); /* Aumenta el tamaño ligeramente al pasar el ratón */
 }
 
 /* Título elegante */
 .login-box h2 {
-  font-size: 28px;
-  margin-bottom: 25px;
-  font-weight: 600;
-  background: linear-gradient(135deg, #ff007f, #00c6ff); /* Gradiente vibrante */
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: 28px; /* Tamaño de fuente grande para el título */
+  margin-bottom: 25px; /* Espaciado debajo del título */
+  font-weight: 600; /* Peso de fuente seminegrita */
+  background: linear-gradient(135deg, #ff007f, #00c6ff); /* Gradiente vibrante como fondo */
+  -webkit-background-clip: text; /* Clip del fondo en el texto (Safari) */
+  background-clip: text; /* Clip del fondo en el texto */
+  color: transparent; /* El texto es transparente para mostrar el gradiente */
 }
 
 /* Campos de entrada estilizados */
 .input-field {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  outline: none;
-  background: rgba(255, 255, 255, 0.2);
-  color: rgb(0, 0, 0);
-  transition: background 0.3s ease;
+  width: 100%; /* Los campos de entrada ocupan todo el ancho disponible */
+  padding: 12px; /* Espaciado interno */
+  margin: 10px 0; /* Espaciado superior e inferior entre los campos */
+  border: none; /* Sin borde visible */
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente adecuado */
+  outline: none; /* Elimina el borde de enfoque por defecto */
+  background: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+  color: rgb(0, 0, 0); /* Color de texto oscuro */
+  transition: background 0.3s ease; /* Transición suave para el cambio de fondo */
 }
 
 .input-field::placeholder {
-  color: #e0e0e0;
+  color: #e0e0e0; /* Color de texto del placeholder */
 }
 
 .input-field:focus {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.3); /* Fondo más oscuro cuando el campo está enfocado */
 }
 
 /* Botón animado */
 .submit-btn {
-  width: 100%;
-  padding: 12px;
-  margin-top: 15px;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(45deg, #00c6ff, #0072ff); /* Gradiente brillante */
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%; /* El botón ocupa todo el ancho disponible */
+  padding: 12px; /* Espaciado interno */
+  margin-top: 15px; /* Espaciado superior */
+  border: none; /* Sin borde visible */
+  border-radius: 8px; /* Bordes redondeados */
+  background: linear-gradient(45deg, #00c6ff, #0072ff); /* Gradiente brillante para el fondo */
+  color: white; /* Color de texto blanco */
+  font-size: 16px; /* Tamaño de fuente adecuado */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+  transition: transform 0.2s, box-shadow 0.2s; /* Transición suave para efectos de hover */
 }
 
 .submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+  transform: translateY(-2px); /* Levanta ligeramente el botón al pasar el ratón */
+  box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4); /* Añade sombra al botón al pasar el ratón */
 }
 
 /* Error */
 .error-message {
-  color: #ff5c5c;
-  font-size: 14px;
-  margin-top: 10px;
+  color: #ff5c5c; /* Color rojo para los mensajes de error */
+  font-size: 14px; /* Tamaño de fuente pequeño para los mensajes de error */
+  margin-top: 10px; /* Espaciado superior para separar el mensaje de los otros elementos */
 }
 
 /* Switch entre login y registro */
 .switch-form {
-  margin-top: 20px;
+  margin-top: 20px; /* Espaciado superior para el botón de cambio */
 }
 
 .switch-btn {
-  background: none;
-  border: none;
-  color: #000000;
-  cursor: pointer;
-  font-size: 15px;
-  text-decoration: underline;
-  transition: color 0.3s;
+  background: none; /* Sin fondo en el botón */
+  border: none; /* Sin borde */
+  color: #000000; /* Color de texto negro */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+  font-size: 15px; /* Tamaño de fuente pequeño */
+  text-decoration: underline; /* Subraya el texto */
+  transition: color 0.3s; /* Transición suave para el color */
 }
 
 .switch-btn:hover {
@@ -125,7 +125,7 @@ html {
 
 /* Estilos de contenedor */
 .container {
-  color-scheme: light dark;
-  font-size: clamp(1rem, 5vw, 2rem);
-  width: clamp(320px, 90%, 1200px);
+  color-scheme: light dark; /* Define los esquemas de color para el modo claro y oscuro */
+  font-size: clamp(1rem, 5vw, 2rem); /* Tamaño de fuente adaptable entre 1rem y 2rem, basado en el tamaño de la ventana */
+  width: clamp(320px, 90%, 1200px); /* Ancho adaptable entre 320px y 1200px, basado en el tamaño de la ventana */
 }

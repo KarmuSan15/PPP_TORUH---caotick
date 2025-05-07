@@ -1,11 +1,14 @@
 /* Este estilo oculta el h1 sospechoso generado externamente */
 h1[role="heading"][class*="css-text-"][aria-level="1"] {
-    display: none !important;
-  }
-  /* Eliminar el borde inferior de la barra sin afectar otros elementos */
-div.css-view-175oi2r {
-  border-bottom: none !important;
+  display: none !important; /* Fuerza a ocultar el h1 específico con esos atributos */
 }
+
+/* Eliminar el borde inferior de la barra sin afectar otros elementos */
+div.css-view-175oi2r {
+  border-bottom: none !important; /* Elimina el borde inferior de este div específico */
+}
+
+/* Oculta cualquier div con un fondo blanco, sin afectar otros elementos */
 div[style*="background-color: rgb(255, 255, 255)"] {
-  display: none !important;
+  display: none !important; /* Fuerza a ocultar el div que tenga este fondo específico */
 }

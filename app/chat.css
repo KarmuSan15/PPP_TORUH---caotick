@@ -1,144 +1,163 @@
+/* Contenedor principal del chat */
 .chat-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    align-self: center;
-    padding-top: 50px;
-    background-color: #f9f9f9;
+    display: flex; /* Usamos flexbox para disponer los elementos */
+    flex-direction: column; /* Los elementos se colocan en una columna */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    align-self: center; /* Centra el contenedor horizontalmente */
+    padding-top: 50px; /* Añade espacio en la parte superior */
+    background-color: #f9f9f9; /* Color de fondo claro */
   }
   
+  /* Contenido del chat */
   .chat-content {
-    padding: 10px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 10px; /* Espaciado interno */
+    flex-grow: 1; /* Permite que el contenido crezca según sea necesario */
+    display: flex; /* Flexbox para organizar los elementos internamente */
+    flex-direction: column; /* Los elementos se disponen en una columna */
+    justify-content: space-between; /* Distribuye el contenido con espacio entre los elementos */
   }
   
+  /* Estilo del encabezado del chat */
   .chat-header {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 24px; /* Tamaño de fuente grande */
+    margin-bottom: 10px; /* Espacio debajo del encabezado */
   }
   
+  /* Contenedor de los mensajes */
   .chat-messages {
-    flex-grow: 1;
-    overflow-y: auto;
-    margin-bottom: 20px; /* Añadimos un margen en la parte inferior de los mensajes */
+    flex-grow: 1; /* Permite que crezca para ocupar el espacio disponible */
+    overflow-y: auto; /* Habilita desplazamiento vertical si hay muchos mensajes */
+    margin-bottom: 20px; /* Añade margen en la parte inferior */
   }
   
+  /* Estilo individual de cada mensaje */
   .chat-message {
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 10px; /* Espacio entre los mensajes */
+    display: flex; /* Flexbox para alinear el contenido */
+    flex-direction: column; /* Dispone los elementos dentro del mensaje en una columna */
   }
   
+  /* Estilo para los mensajes enviados */
   .sent .message-bubble {
-    align-self: flex-end;
-    background-color: #baecff;
-    padding: 8px 15px;
-    border-radius: 15px;
-    max-width: 80%;
+    align-self: flex-end; /* Alinea el mensaje al lado derecho */
+    background-color: #baecff; /* Color de fondo para los mensajes enviados */
+    padding: 8px 15px; /* Espaciado interno */
+    border-radius: 15px; /* Bordes redondeados */
+    max-width: 80%; /* Limita el ancho máximo del mensaje */
   }
   
+  /* Estilo para los mensajes recibidos */
   .received .message-bubble {
-    align-self: flex-start;
-    background-color: #fff;
-    padding: 8px 15px;
-    border-radius: 15px;
-    border: 1px solid #f106b6;
-    max-width: 80%;
+    align-self: flex-start; /* Alinea el mensaje al lado izquierdo */
+    background-color: #fff; /* Fondo blanco para los mensajes recibidos */
+    padding: 8px 15px; /* Espaciado interno */
+    border-radius: 15px; /* Bordes redondeados */
+    border: 1px solid #f106b6; /* Borde rosa para los mensajes recibidos */
+    max-width: 80%; /* Limita el ancho máximo del mensaje */
   }
   
+  /* Estilo común para las burbujas de mensajes */
   .message-bubble {
-    display: flex;
-    flex-direction: column;
-    max-width: 80%;
-    color: black;
+    display: flex; /* Usa flexbox para alinear el contenido */
+    flex-direction: column; /* Organiza el contenido en una columna */
+    max-width: 80%; /* Limita el ancho máximo */
+    color: black; /* Color de texto negro */
   }
   
+  /* Estilo para resaltar el nombre o título del remitente */
   .message-bubble strong {
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: bold; /* Hace el texto en negrita */
+    margin-bottom: 5px; /* Espacio debajo del nombre */
   }
   
+  /* Estilo para las marcas de tiempo de los mensajes */
   .timestamp {
-    font-size: 0.8em;
-    color: #888;
-    margin-top: 5px;
+    font-size: 0.8em; /* Tamaño de fuente pequeño */
+    color: #888; /* Color gris claro para la marca de tiempo */
+    margin-top: 5px; /* Espacio encima de la marca de tiempo */
   }
   
+  /* Estilo del formulario para enviar mensajes */
   .chat-form {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px; /* Añadimos espacio debajo del formulario */
+    display: flex; /* Usamos flexbox para organizar los elementos */
+    gap: 10px; /* Espacio entre los elementos del formulario */
+    margin-bottom: 20px; /* Espacio debajo del formulario */
   }
   
+  /* Estilo de la caja de texto del formulario */
   .chat-form input {
-    flex-grow: 1;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #ddd;
+    flex-grow: 1; /* Permite que el campo de texto crezca para llenar el espacio disponible */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 20px; /* Bordes redondeados */
+    border: 1px solid #ddd; /* Borde gris claro */
   }
   
+  /* Estilo del botón de enviar */
   .chat-form button {
-    padding: 10px;
-    background-color: #4c98af;
-    border: none;
-    border-radius: 20px;
-    color: white;
-    cursor: pointer;
+    padding: 10px; /* Espaciado interno */
+    background-color: #4c98af; /* Color de fondo azul */
+    border: none; /* Sin borde */
+    border-radius: 20px; /* Bordes redondeados */
+    color: white; /* Texto blanco */
+    cursor: pointer; /* El cursor cambia a mano al pasar por encima */
   }
   
+  /* Efecto hover sobre el botón de enviar */
   .chat-form button:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Cambia el color de fondo al pasar el ratón */
   }
   
+  /* Mensaje de texto centrado, generalmente para mostrar un aviso */
   .centered-message {
-    text-align: center;
-    color: #888;
-    font-style: italic;
+    text-align: center; /* Centra el texto */
+    color: #888; /* Color gris claro */
+    font-style: italic; /* Texto en cursiva */
   }
   
+  /* Estilo de la caja de desplazamiento para los mensajes */
   .chat-messages-scroller {
-    height: 70vh;
-    overflow-y: auto;
-    padding: 10px;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    height: 70vh; /* Ocupa el 70% de la altura de la ventana */
+    overflow-y: auto; /* Habilita desplazamiento vertical */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ffffff; /* Borde blanco */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo gris claro */
   }
   
+  /* Estilo de la burbuja de mensaje */
   .message-bubble {
     max-width: 70%; /* El mensaje no ocupará más del 70% del ancho del chat */
-    word-wrap: break-word; /* Si una palabra es demasiado larga, se partirá */
-    overflow-wrap: break-word;
-    background-color: #e1ffc7;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 5px;
-    position: relative;
+    word-wrap: break-word; /* Rompe las palabras largas para ajustarse al contenedor */
+    overflow-wrap: break-word; /* Asegura que las palabras largas se dividan */
+    background-color: #e1ffc7; /* Color de fondo verde claro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 5px; /* Espacio debajo del mensaje */
+    position: relative; /* Posicionamiento relativo para facilitar futuras modificaciones */
   }
   
+  /* Alineación del mensaje enviado a la derecha */
   .sent .message-bubble {
-    align-self: flex-end;
+    align-self: flex-end; /* Alinea los mensajes enviados a la derecha */
   }
   
+  /* Alineación del mensaje recibido a la izquierda */
   .received .message-bubble {
-    align-self: flex-start;
+    align-self: flex-start; /* Alinea los mensajes recibidos a la izquierda */
   }
   
+  /* Estilo para el texto del mensaje */
   .message-text {
-    color: #333;
-    font-size: 14px;
+    color: #333; /* Color de texto gris oscuro */
+    font-size: 14px; /* Tamaño de fuente más pequeño para el texto del mensaje */
   }
   
+  /* Estilo de la marca de tiempo del mensaje */
   .timestamp {
-    display: block;
-    font-size: 0.8em;
-    color: #888;
-    margin-top: 5px;
-    text-align: right;
+    display: block; /* Hace que la marca de tiempo ocupe su propia línea */
+    font-size: 0.8em; /* Tamaño de fuente pequeño */
+    color: #888; /* Color gris claro */
+    margin-top: 5px; /* Espacio arriba de la marca de tiempo */
+    text-align: right; /* Alinea la marca de tiempo a la derecha */
   }
-  
-  
   

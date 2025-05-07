@@ -1,147 +1,154 @@
-/* Reset */
+/* Reset de estilos básicos */
 body, html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  background: #111;
+  margin: 0; /* Elimina los márgenes predeterminados */
+  padding: 0; /* Elimina los rellenos predeterminados */
+  box-sizing: border-box; /* Asegura que el padding y el borde no afecten el tamaño del elemento */
+  font-family: 'Poppins', sans-serif; /* Establece la tipografía de la página */
+  background: #111; /* Fondo oscuro para todo el documento */
 }
 
-/* Main header */
+/* Estilo para el encabezado principal del menú */
 .menu-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(135deg, #ff007f, #00c6ff); /* Gradiente vibrante */
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  padding: 10px 0;
-  transition: background 0.3s ease-in-out;
+  position: fixed; /* Fija el encabezado en la parte superior */
+  top: 0; /* Alinea el encabezado en la parte superior */
+  left: 0; /* Alinea el encabezado al borde izquierdo */
+  width: 100%; /* Hace que el encabezado ocupe todo el ancho de la página */
+  background: linear-gradient(135deg, #ff007f, #00c6ff); /* Fondo con gradiente vibrante */
+  z-index: 1000; /* Asegura que el encabezado esté por encima de otros elementos */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil para dar un efecto de profundidad */
+  padding: 10px 0; /* Relleno vertical para el encabezado */
+  transition: background 0.3s ease-in-out; /* Transición suave para el cambio de color de fondo */
 }
 
-/* Container */
+/* Contenedor principal para alinear los elementos del menú */
 .menu-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Alinea los elementos verticalmente */
-  padding: 1rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  color: white;
+  display: flex; /* Utiliza flexbox para el alineamiento */
+  justify-content: space-between; /* Coloca los elementos al inicio y al final del contenedor */
+  align-items: center; /* Alinea los elementos verticalmente en el centro */
+  padding: 1rem 2rem; /* Relleno alrededor del contenido */
+  max-width: 1200px; /* Limita el ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  color: white; /* Establece el color del texto */
 }
 
-/* Logo */
+/* Estilo para el logo */
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: #fff;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #ff007f, #00c6ff);
-  -webkit-background-clip: text;
-  background-clip: text;
+  font-size: 1.8rem; /* Tamaño de fuente mayor para el logo */
+  font-weight: bold; /* Hace que el logo sea más prominente */
+  letter-spacing: 1px; /* Espaciado entre las letras */
+  color: #fff; /* Establece el color del texto del logo */
+  text-transform: uppercase; /* Convierte el texto del logo a mayúsculas */
+  background: linear-gradient(135deg, #ff007f, #00c6ff); /* Gradiente de color para el logo */
+  -webkit-background-clip: text; /* Aplica el gradiente solo al texto en navegadores Webkit */
+  background-clip: text; /* Aplica el gradiente solo al texto */
 }
 
-/* Nav links */
+/* Estilo para los enlaces del menú de navegación */
 .nav {
-  display: flex;
-  gap: 2rem;
-  align-items: center; /* Asegura que los enlaces estén alineados verticalmente */
+  display: flex; /* Utiliza flexbox para la disposición de los enlaces */
+  gap: 2rem; /* Espacio entre los enlaces */
+  align-items: center; /* Alinea los enlaces verticalmente en el centro */
 }
 
+/* Estilo para cada enlace o botón dentro del menú */
 .nav a,
 .nav button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: color 0.3s, transform 0.3s ease, background 0.3s ease;
+  background: none; /* Elimina el fondo por defecto */
+  border: none; /* Elimina los bordes por defecto */
+  color: white; /* Establece el color de texto en blanco */
+  font-size: 1rem; /* Tamaño de fuente de los enlaces */
+  font-weight: 500; /* Peso de fuente medio */
+  cursor: pointer; /* Cambia el cursor a puntero cuando se pasa sobre el enlace */
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  padding: 8px 16px; /* Relleno alrededor de los enlaces */
+  border-radius: 4px; /* Bordes redondeados */
+  transition: color 0.3s, transform 0.3s ease, background 0.3s ease; /* Transiciones suaves para color, transformación y fondo */
 }
 
-/* Hover effect for nav items */
+/* Efecto hover para los enlaces y botones del menú */
 .nav a:hover,
 .nav button:hover {
-  background: rgba(255, 255, 255, 0.2); /* Añadir un fondo sutil */
-  color: #ff007f; /* Color de texto brillante */
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2); /* Fondo sutil al pasar el ratón */
+  color: #ff007f; /* Cambio de color de texto a un tono brillante */
+  transform: scale(1.1); /* Aumento de tamaño al pasar el ratón sobre los elementos */
 }
 
-/* Estilo para el botón de Cerrar sesión */
+/* Estilo para el botón de cerrar sesión */
 .logout-btn {
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
-  font-size: 16px;
-  background-color: #e63946; /* Color rojo para cerrar sesión */
-  color: white;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer; /* Cambia el cursor a puntero */
+  border: none; /* Elimina el borde */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 10px 16px; /* Relleno dentro del botón */
+  font-size: 16px; /* Tamaño de fuente */
+  background-color: #e63946; /* Color rojo para el botón */
+  color: white; /* Color del texto */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave para el color de fondo y la transformación */
   margin-left: auto; /* Empuja el botón al extremo derecho */
 }
 
+/* Efecto hover para el botón de cerrar sesión */
 .logout-btn:hover {
-  background-color: #d32f2f; /* Rojo oscuro en hover */
-  transform: translateY(-1px);
+  background-color: #d32f2f; /* Cambia a un rojo más oscuro al pasar el ratón */
+  transform: translateY(-1px); /* Pequeña elevación del botón al pasar el ratón */
 }
 
-/* Hamburger icon for mobile */
+/* Estilos para el ícono de hamburguesa en dispositivos móviles */
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  cursor: pointer;
+  display: none; /* Oculta el icono en pantallas grandes por defecto */
+  flex-direction: column; /* Alinea las tres líneas del icono en una columna */
+  gap: 4px; /* Espacio entre las líneas del icono */
+  cursor: pointer; /* Cambia el cursor a puntero */
 }
 
+/* Estilo de las líneas del ícono de hamburguesa */
 .hamburger span {
-  width: 25px;
-  height: 3px;
-  background: white;
-  border-radius: 3px;
-  transition: all 0.3s ease;
+  width: 25px; /* Ancho de las líneas del icono */
+  height: 3px; /* Altura de las líneas */
+  background: white; /* Color blanco para las líneas */
+  border-radius: 3px; /* Bordes redondeados de las líneas */
+  transition: all 0.3s ease; /* Transición suave para las líneas */
 }
 
-/* Responsive styles */
+/* Estilos para dispositivos móviles con una resolución máxima de 768px */
 @media (max-width: 768px) {
+  /* Estilo para el contenedor de la navegación en pantallas pequeñas */
   .nav {
-      position: absolute;
-      top: 64px;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(135deg, #ff007f, #00c6ff); /* Gradiente vibrante */
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 1rem 2rem;
-      display: none;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      position: absolute; /* Posiciona la navegación de forma absoluta en relación a su contenedor */
+      top: 64px; /* Posición desde la parte superior */
+      left: 0; /* Alinea a la izquierda */
+      width: 100%; /* Hace que la navegación ocupe todo el ancho de la pantalla */
+      background: linear-gradient(135deg, #ff007f, #00c6ff); /* Fondo con gradiente */
+      flex-direction: column; /* Coloca los enlaces verticalmente */
+      align-items: flex-start; /* Alinea los enlaces a la izquierda */
+      padding: 1rem 2rem; /* Relleno dentro del contenedor */
+      display: none; /* Oculta la navegación por defecto */
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
   }
 
+  /* Muestra la navegación cuando la clase 'open' está presente */
   .nav.open {
-      display: flex;
+      display: flex; /* Muestra la navegación */
   }
 
+  /* Muestra el icono de hamburguesa */
   .hamburger {
-      display: flex;
+      display: flex; /* Muestra el icono de hamburguesa */
   }
 
+  /* Efecto de transformación para las líneas del ícono de hamburguesa cuando se abre el menú */
   .hamburger span:nth-child(1) {
-      transform: rotate(45deg);
+      transform: rotate(45deg); /* Gira la primera línea */
       position: relative;
-      top: 5px;
+      top: 5px; /* Desplaza ligeramente la línea hacia abajo */
   }
 
   .hamburger span:nth-child(2) {
-      opacity: 0;
+      opacity: 0; /* Hace invisible la segunda línea */
   }
 
   .hamburger span:nth-child(3) {
-      transform: rotate(-45deg);
+      transform: rotate(-45deg); /* Gira la tercera línea */
       position: relative;
-      bottom: 5px;
+      bottom: 5px; /* Desplaza ligeramente la línea hacia arriba */
   }
 }

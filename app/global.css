@@ -1,117 +1,117 @@
 /* Reset básico y tipografía */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  margin: 0; /* Elimina los márgenes por defecto */
+  padding: 0; /* Elimina los rellenos por defecto */
+  box-sizing: border-box; /* Incluye los bordes y el padding dentro del tamaño total de los elementos */
+  font-family: 'Inter', 'Segoe UI', sans-serif; /* Fuente predeterminada para el texto */
 }
 
 /* Elimina el fondo del body */
 body {
-  min-height: 100vh;
-  background: #111; /* Fondo oscuro */
+  min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
+  background: #111; /* Fondo oscuro para todo el cuerpo */
   color: #000000; /* Color de texto por defecto */
-  line-height: 1.6;
+  line-height: 1.6; /* Aumenta la legibilidad del texto */
 }
 
 /* Contenedor principal */
 .App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
+  display: flex; /* Usa flexbox para organizar los elementos */
+  flex-direction: column; /* Los elementos dentro de la App se apilan en una columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  padding: 2rem; /* Añade espacio alrededor del contenido */
 }
 
 /* Titulares con gradiente */
 h1, h2, h3 {
-  color: transparent;
-  background: linear-gradient(135deg, #ff007f, #00c6ff); /* Gradiente vibrante */
-  -webkit-background-clip: text;
-  background-clip: text;
-  font-weight: 600;
+  color: transparent; /* Hace que el texto sea transparente */
+  background: linear-gradient(135deg, #ff007f, #00c6ff); /* Aplicación de un gradiente vibrante de colores */
+  -webkit-background-clip: text; /* Hace que el gradiente se aplique solo al texto (para navegadores webkit) */
+  background-clip: text; /* Asegura que el gradiente se aplique solo al texto */
+  font-weight: 600; /* Establece el grosor de la fuente */
 }
 
 /* Botones genéricos con gradiente y hover animado */
 button {
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
-  font-size: 16px;
-  background: linear-gradient(45deg, #00c6ff, #0072ff); /* Gradiente brillante */
-  color: white;
-  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer; /* Muestra un cursor de mano cuando pasa sobre el botón */
+  border: none; /* Elimina el borde del botón */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 10px 16px; /* Espaciado dentro del botón */
+  font-size: 16px; /* Establece el tamaño de la fuente */
+  background: linear-gradient(45deg, #00c6ff, #0072ff); /* Gradiente de fondo brillante */
+  color: white; /* Color del texto blanco */
+  transition: background 0.3s ease, transform 0.2s ease; /* Añade transiciones suaves para cambios de fondo y movimiento */
 }
 
 button:hover {
-  background: linear-gradient(45deg, #0072ff, #00c6ff); /* Invertir gradiente */
-  transform: translateY(-2px);
+  background: linear-gradient(45deg, #0072ff, #00c6ff); /* Inversión del gradiente al pasar el ratón */
+  transform: translateY(-2px); /* Desplaza el botón hacia arriba para un efecto de elevación */
 }
 
 /* Formularios generales */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: 100%;
-  padding: 12px;
-  margin-top: 8px;
-  margin-bottom: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  background: rgba(255, 255, 255, 0.2);
-  color: #000000;
-  transition: border-color 0.3s ease, background 0.3s ease;
+  width: 100%; /* Los campos de texto ocupan el 100% del ancho disponible */
+  padding: 12px; /* Espaciado dentro del campo de texto */
+  margin-top: 8px; /* Espacio superior entre los campos */
+  margin-bottom: 16px; /* Espacio inferior entre los campos */
+  border: 1px solid #ccc; /* Borde sutil gris claro */
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
+  background: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
+  color: #000000; /* Color de texto dentro del campo */
+  transition: border-color 0.3s ease, background 0.3s ease; /* Transición suave para cambios en el borde y fondo */
 }
 
 input:focus {
-  outline: none;
-  border-color: #00c6ff; /* Color brillante al enfocarse */
-  background: rgba(255, 255, 255, 0.3); /* Cambio de fondo al enfocarse */
+  outline: none; /* Elimina el borde por defecto al enfocar el campo */
+  border-color: #00c6ff; /* Color brillante para el borde al enfocarse */
+  background: rgba(255, 255, 255, 0.3); /* Fondo ligeramente más brillante cuando está enfocado */
 }
 
 /* Layout de contenido */
 .container {
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 800px; /* Limita el ancho máximo del contenedor */
+  width: 100%; /* El contenedor ocupa el 100% del ancho disponible */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  padding: 20px; /* Añade espaciado alrededor del contenido */
 }
 
 /* Cards con sombras y bordes redondeados */
 .card {
-  background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  padding: 24px;
-  margin: 20px 0;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  background-color: white; /* Fondo blanco para las tarjetas */
+  border-radius: 16px; /* Bordes redondeados */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Sombra sutil para dar profundidad */
+  padding: 24px; /* Espaciado dentro de la tarjeta */
+  margin: 20px 0; /* Espaciado entre tarjetas */
+  transition: box-shadow 0.3s ease, transform 0.2s ease; /* Transición para cambios de sombra y desplazamiento */
 }
 
 .card:hover {
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al pasar el ratón */
+  transform: translateY(-2px); /* Eleva la tarjeta al pasar el ratón */
 }
 
 /* Transiciones suaves para enlaces, botones y entradas */
 a, button, input {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; /* Aplica una transición suave para todos los cambios */
 }
 
 /* Responsive para pantallas pequeñas */
 @media (max-width: 600px) {
   .container {
-    padding: 10px;
+    padding: 10px; /* Reduce el espaciado para pantallas pequeñas */
   }
 
   .card {
-    padding: 16px;
+    padding: 16px; /* Reduce el espaciado interno de las tarjetas */
   }
 }
 
 /* Estilos finales del contenedor */
 .container {
-  color-scheme: light dark;
-  font-size: clamp(1rem, 5vw, 2rem);
-  width: clamp(320px, 90%, 1200px);
+  color-scheme: light dark; /* Soporta modo claro y oscuro */
+  font-size: clamp(1rem, 5vw, 2rem); /* Ajusta el tamaño de fuente dinámicamente según el tamaño de la pantalla */
+  width: clamp(320px, 90%, 1200px); /* Limita el ancho del contenedor a un rango entre 320px y 1200px */
 }

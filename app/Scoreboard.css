@@ -1,117 +1,115 @@
-/* scoreboard.css */
-
 /* Contenedor principal */
 .scoreboard-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+  display: flex; /* Utiliza flexbox para alinear los elementos */
+  flex-direction: column; /* Coloca los elementos en una columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: flex-start; /* Alinea los elementos al principio del contenedor */
+  min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la pantalla */
+  background-color: #f5f5f5; /* Color de fondo del contenedor */
+  font-family: Arial, sans-serif; /* Establece la fuente de la página */
+  overflow: hidden; /* Evita el desbordamiento del contenido fuera del contenedor */
 }
 
 /* Contenido del scoreboard */
 .scoreboard-content {
-  width: 100%;
-  max-width: 800px;
-  margin: 20px;
-  padding: 10px;
-  padding-top: 50px;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  height: calc(100vh - 80px);
-  overflow-y: auto;
+  width: 100%; /* El ancho del contenedor es del 100% */
+  max-width: 800px; /* El ancho máximo es de 800px */
+  margin: 20px; /* Espaciado alrededor del contenedor */
+  padding: 10px; /* Padding interno de 10px */
+  padding-top: 50px; /* Padding superior adicional */
+  background-color: #f9f9f9; /* Color de fondo del contenido */
+  border-radius: 12px; /* Bordes redondeados del contenido */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor del contenido */
+  height: calc(100vh - 80px); /* Altura calculada para ocupar toda la pantalla menos los márgenes */
+  overflow-y: auto; /* Permite desplazarse verticalmente si el contenido es grande */
 }
 
 /* Encabezado fijo y centrado */
 .scoreboard-header {
-  position: sticky;
-  top: 0;
-  background-color: #ffffff;
-  color: white;
-  padding: 15px 0;
-  text-align: center;
-  font-size: 2.4rem;
-  font-weight: bold;
-  z-index: 10;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky; /* Hace que el encabezado se quede fijo al hacer scroll */
+  top: 0; /* Fija el encabezado en la parte superior */
+  background-color: #ffffff; /* Fondo blanco para el encabezado */
+  color: white; /* Color de texto blanco (para cuando esté sobre un fondo oscuro) */
+  padding: 15px 0; /* Padding vertical para el encabezado */
+  text-align: center; /* Centra el texto del encabezado */
+  font-size: 2.4rem; /* Tamaño de fuente grande */
+  font-weight: bold; /* Hace que el texto sea en negrita */
+  z-index: 10; /* Asegura que el encabezado quede encima de otros elementos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera para el encabezado */
 }
 
 /* Centrado absoluto del título */
 .scoreboard-header h2 {
-  margin: 0;
+  margin: 0; /* Elimina márgenes alrededor del encabezado */
 }
 
 /* Lista de puntuaciones */
 .scoreboard-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  list-style: none; /* Elimina los puntos de lista predeterminados */
+  padding: 0; /* Elimina el padding por defecto */
+  margin: 0; /* Elimina el margen por defecto */
 }
 
 /* Estilo de los elementos de la lista */
 .scoreboard-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background-color: #ffffff;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s ease;
+  display: flex; /* Utiliza flexbox para distribuir el contenido */
+  justify-content: space-between; /* Distribuye los elementos en el espacio disponible */
+  align-items: center; /* Alinea los elementos verticalmente */
+  padding: 15px; /* Padding interno para cada elemento de la lista */
+  background-color: #ffffff; /* Fondo blanco para cada ítem */
+  margin-bottom: 10px; /* Espaciado inferior entre elementos */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra suave alrededor de cada ítem */
+  transition: background-color 0.3s ease; /* Transición suave para el color de fondo al pasar el ratón */
 }
 
 /* Efecto hover */
 .scoreboard-item:hover {
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; /* Cambia el color de fondo al pasar el ratón */
 }
 
 /* Rango del marcador */
 .scoreboard-rank {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
+  font-size: 1.5rem; /* Tamaño de fuente grande para el rango */
+  font-weight: bold; /* Negrita para el rango */
+  color: #333; /* Color oscuro para el texto */
 }
 
 /* Detalles del usuario */
 .scoreboard-details {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  flex-grow: 1;
-  margin-left: 10px;
+  display: flex; /* Flexbox para alinear los detalles del usuario */
+  flex-direction: column; /* Coloca los detalles en una columna */
+  text-align: left; /* Alinea el texto a la izquierda */
+  flex-grow: 1; /* Permite que este contenedor crezca y ocupe el espacio disponible */
+  margin-left: 10px; /* Espaciado izquierdo entre el rango y los detalles */
 }
 
 /* Nombre de usuario */
 .scoreboard-details strong {
-  color: #333;
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 5px;
+  color: #333; /* Color oscuro para el nombre */
+  font-size: 1.2rem; /* Tamaño de fuente para el nombre */
+  font-weight: 600; /* Negrita para el nombre */
+  margin-bottom: 5px; /* Espaciado inferior */
 }
 
 /* Partidas ganadas y perdidas */
 .scoreboard-details p {
-  color: #555;
-  font-size: 1.1rem;
-  font-weight: 500;
+  color: #555; /* Color de texto más suave para las partidas */
+  font-size: 1.1rem; /* Tamaño de fuente ligeramente más pequeño */
+  font-weight: 500; /* Peso de fuente medio */
 }
 
 /* Mensaje cuando no hay puntuaciones */
 .centered-message {
-  font-size: 1.5rem;
-  color: #777;
-  text-align: center;
-  margin-top: 20px;
+  font-size: 1.5rem; /* Tamaño de fuente grande para el mensaje */
+  color: #777; /* Color gris claro para el mensaje */
+  text-align: center; /* Centra el texto */
+  margin-top: 20px; /* Espaciado superior */
 }
 
 /* Estilo de la tabla cuando no hay puntuaciones */
 .scoreboard-list.empty {
-  padding: 20px;
-  font-size: 1.2rem;
-  color: #666;
+  padding: 20px; /* Padding interno adicional */
+  font-size: 1.2rem; /* Tamaño de fuente más pequeño para el texto */
+  color: #666; /* Color gris para indicar que no hay datos */
 }
