@@ -91,9 +91,9 @@ const Menu: React.FC = () => {
             {isLoggedIn && (
               <div>
                 {userName ? (
-                  <span>Bienvenido, {userName}</span>
+                  <span></span>
                 ) : (
-                  <span>Bienvenido, {userEmail}</span> // Si no hay nombre, mostramos el email
+                  <span></span> // Si no hay nombre, mostramos el email
                 )}
                 <button onClick={handleLogout} className="logout-btn">
                   Cerrar sesión

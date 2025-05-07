@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import { supabase } from '../lib/supabase';
 import './juego.css';
 import Menu from './Menu';
@@ -17,6 +17,7 @@ const Juego: React.FC = () => {
   const [minesCount, setMinesCount] = useState(0);
   const [flagsCount, setFlagsCount] = useState(0);
   const [user, setUser] = useState<{ email: string; id: string } | null>(null); // Agregamos el estado de usuario
+  const [showInstructions, setShowInstructions] = useState(false); // Estado para mostrar las instrucciones
   const gridSize = 8;
   const mineCount = 10;
 
@@ -126,14 +127,34 @@ const Juego: React.FC = () => {
     setGrid(newGrid);
 
     if (cell.isMine) {
+      // Revelamos todas las minas cuando se pierde
+      revealMines(newGrid);
       setjuegoStatus('lost');
       alert('¡Perdiste!');
-      saveScore();
+      saveScore('lost');  // Guardamos el resultado como 'lost'
     } else if (isjuegoWon(newGrid)) {
       setjuegoStatus('won');
       alert('¡Ganaste!');
-      saveScore();
+      saveScore('won');  // Guardamos el resultado como 'won'
     }
+  };
+
+  const handleContextMenu = (event: React.MouseEvent, row: number, col: number) => {
+    event.preventDefault(); // Evitar el menú contextual del navegador
+
+    if (juegoStatus !== 'playing') return;
+
+    const newGrid = [...grid];
+    const cell = newGrid[row][col];
+
+    if (cell.isRevealed) return; // No permitir marcar una celda ya revelada
+
+    // Cambiar el estado de la bandera
+    cell.isFlagged = !cell.isFlagged;
+    setGrid(newGrid);
+
+    // Actualizar el contador de banderas
+    setFlagsCount((prevCount) => prevCount + (cell.isFlagged ? 1 : -1));
   };
 
   const isjuegoWon = (grid: Cell[][]) => {
@@ -142,7 +163,7 @@ const Juego: React.FC = () => {
     );
   };
 
-  const saveScore = async () => {
+  const saveScore = async (result: string) => {
     if (!user || !user.id || !user.email) {
       console.warn('Usuario no definido. No se puede guardar la puntuación.');
       return;
@@ -155,6 +176,8 @@ const Juego: React.FC = () => {
       email: user.email,
       time: timeElapsed,
       minesfound: minesFound, // Ahora se usa el número de minas encontradas
+      games_won: result === 'won' ? 1 : 0,  // Guardamos el estado de ganado
+      games_lost: result === 'lost' ? 1 : 0,  // Guardamos el estado de perdido
     };
 
     const { data, error } = await supabase.from('scores').insert([score]);
@@ -166,12 +189,39 @@ const Juego: React.FC = () => {
     }
   };
 
+  // Función para revelar todas las minas cuando el jugador pierde
+  const revealMines = (newGrid: Cell[][]) => {
+    newGrid.forEach(row => {
+      row.forEach(cell => {
+        if (cell.isMine) {
+          cell.isRevealed = true; // Revela todas las minas
+        }
+      });
+    });
+    setGrid(newGrid);
+  };
+
   return (
     <div className="juego-container">
       <Menu />
       <div className="juego-center">
         <h2>Busca Minas</h2>
         <button onClick={startNewjuego}>Nuevo Juego</button>
+        {/* Botón para mostrar las instrucciones */}
+        <button onClick={() => setShowInstructions(!showInstructions)}>
+          {showInstructions ? 'Ocultar Instrucciones' : 'Cómo se Juega'}
+        </button>
+
+        {/* Desplegable de instrucciones */}
+        {showInstructions && (
+          <div className="instructions">
+            <h3>Instrucciones</h3>
+            <p>Bienvenido a Busca Minas. El objetivo del juego es encontrar todas las celdas vacías sin hacer clic en las minas.</p>
+            <p>Haz clic en una celda para revelar su contenido. Si encuentras una mina, pierdes el juego. Si descubres todas las celdas sin minas, ¡ganas!</p>
+            <p>Cada celda revelada mostrará el número de minas adyacentes. Usa estos números para deducir dónde están las minas. ¡Buena suerte!</p>
+          </div>
+        )}
+
         <div className="timer">Tiempo: {timeElapsed}s</div>
         <div className="grid">
           {grid.map((row, rowIndex) => (
@@ -179,10 +229,13 @@ const Juego: React.FC = () => {
               {row.map((cell, colIndex) => (
                 <div
                   key={colIndex}
-                  className={`cell ${cell.isRevealed ? 'revealed' : ''}`}
+                  className={`cell ${cell.isRevealed ? 'revealed' : ''} ${cell.isFlagged ? 'flagged' : ''}`}
                   onClick={() => handleCellClick(rowIndex, colIndex)}
+                  onContextMenu={(e) => handleContextMenu(e, rowIndex, colIndex)}
                 >
                   {cell.isRevealed && !cell.isMine ? cell.adjacentMines : ''}
+                  {cell.isRevealed && cell.isMine ? '💣' : ''}
+                  {cell.isFlagged ? '🚩' : ''}
                 </div>
               ))}
             </div>

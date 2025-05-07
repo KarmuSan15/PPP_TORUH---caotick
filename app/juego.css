@@ -114,4 +114,16 @@
     justify-content: center;
     width: 100%;
   }
-  
+  .instructions {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    font-size: 14px;
+    color: black;  /* Color de texto negro */
+  }
+  .cell.flagged {
+    background-color: #ffeb3b; /* Amarillo claro para la celda marcada con bandera */
+  }
+    
